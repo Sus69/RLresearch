@@ -1,0 +1,23 @@
+# Virtual environment / Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Large local data and model artifacts (do not commit)
+datasets/*
+!datasets/.gitkeep
+experiments/*
+!experiments/.gitkeep
+results/*
+!results/.gitkeep
+research/papers/*.pdf
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/settings.json

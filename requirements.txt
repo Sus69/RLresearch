@@ -1,0 +1,19 @@
+# Core deep learning (CUDA build installed from the PyTorch cu128 index)
+# Install with:
+#   pip install torch --index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0
+
+# Model framework / training
+transformers
+datasets
+accelerate
+sentencepiece
+safetensors
+
+# Evaluation and metrics
+scikit-learn
+evaluate
+
+# Experiment tracking / notebooks
+tensorboard
+jupyter
