@@ -1,19 +1,33 @@
-# Core deep learning (CUDA build installed from the PyTorch cu128 index)
-# Install with:
-#   pip install torch --index-url https://download.pytorch.org/whl/cu128
-torch==2.11.0
+# Exact versions verified on the RTX 2050 / Windows 11 / CPython 3.13.14 environment.
+#
+# IMPORTANT: torch must come from the CUDA index, not PyPI. The PyPI Windows wheel
+# ("torch-2.11.0-cp313-cp313-win_amd64.whl") is CPU-only. Install torch first:
+#
+#   pip install torch==2.11.0+cu128 --index-url https://download.pytorch.org/whl/cu128
+#
+# then:
+#
+#   pip install -r requirements.txt
+#
+# The "+cu128" local version pin makes a bare `pip install -r requirements.txt`
+# fail loudly instead of quietly installing the CPU build.
+
+torch==2.11.0+cu128
 
 # Model framework / training
-transformers
-datasets
-accelerate
-sentencepiece
-safetensors
+transformers==5.24.0
+datasets==5.2.0
+accelerate==1.16.0
+sentencepiece==0.2.3
+safetensors==0.8.0
 
-# Evaluation and metrics
-scikit-learn
-evaluate
+# Numerics / evaluation
+numpy==2.5.5
+scikit-learn==1.9.1
+evaluate==0.4.6
 
 # Experiment tracking / notebooks
-tensorboard
-jupyter
+tensorboard==2.21.0
+jupyter==1.1.1
+
+# Deliberately deferred to the fine-tuning stage: peft, bitsandbytes

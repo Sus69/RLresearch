@@ -4,17 +4,25 @@ Research workspace for a hybrid Transformer architecture.
 
 ## Environment
 
-| Component | Choice |
+Verified on 2026-07 (see `requirements.txt` for the exact pinned set).
+
+| Component | Verified value |
 |---|---|
 | OS | Windows 11 |
-| Editor | VS Code |
-| Python | 3.13 (venv in `.venv/`) |
-| Deep learning | PyTorch 2.11.0+cu128 |
-| GPU | NVIDIA GeForce RTX 2050, 4 GB VRAM, driver 610.78 |
-| Model framework | Hugging Face Transformers |
-| Fine-tuning | PEFT (added at the fine-tuning stage) |
-| Tracking | TensorBoard |
-| Version control | Git |
+| Editor | VS Code 1.147.0 |
+| Python | 3.13.14 (venv in `.venv/`) |
+| Deep learning | PyTorch 2.11.0+cu128 (CUDA 12.8, cuDNN 9.19) |
+| GPU | NVIDIA GeForce RTX 2050, 4 GB VRAM, driver 610.78, compute capability 8.6 |
+| Model framework | Hugging Face Transformers 5.24.0 |
+| Fine-tuning | PEFT (deliberately not installed yet) |
+| Tracking | TensorBoard 2.21.0 |
+| Version control | Git 2.56.0 |
+
+`requirements.txt` pins every direct dependency to the version recorded above, so
+`pip install -r requirements.txt` in a matching environment installs nothing.
+
+Note: Python 3.13 is used rather than 3.11 because no 3.11 interpreter is available
+on this machine; PyTorch ships cp313 CUDA wheels, so this is fully supported.
 
 ## Setup
 
@@ -22,9 +30,12 @@ Research workspace for a hybrid Transformer architecture.
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-pip install torch --index-url https://download.pytorch.org/whl/cu128
+pip install torch==2.11.0+cu128 --index-url https://download.pytorch.org/whl/cu128
 pip install -r requirements.txt
 ```
+
+Do not install `torch` from PyPI: the Windows wheel there is CPU-only, which is why
+`requirements.txt` pins the `+cu128` local version.
 
 ## Verify the GPU
 
