@@ -21,3 +21,6 @@ research/papers/*.pdf
 Thumbs.db
 .DS_Store
 .vscode/settings.json
+
+# Local Hugging Face cache
+.hf-cache/

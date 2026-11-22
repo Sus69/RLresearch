@@ -43,6 +43,25 @@ VRAM: 4.0 GB
 GPU computation successful!
 ```
 
+## First inference run (Qwen3-0.6B-Base)
+
+```powershell
+python qwen3_infer.py
+```
+
+The model is cached under `.hf-cache/` (gitignored) via `HF_HOME`.
+
+Measured on the RTX 2050 at fp16:
+
+| Metric | Value |
+|---|---|
+| Parameters | 596.0M |
+| VRAM after load | 1.11 GB |
+| Peak VRAM (64 new tokens) | 1.13 GB |
+| Throughput | 3.9 tok/s first call, 12.7-14.1 tok/s steady |
+
+The first prompt is much slower because it includes CUDA kernel warmup.
+
 ## Layout
 
 ```text
